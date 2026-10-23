@@ -27,10 +27,9 @@ const CONFIG = {
   mapEmbed: "https://maps.google.com/maps?q=6.2549258,-75.6031431&z=17&output=embed",
   // Rappi store page (leave "" to hide the Rappi buttons)
   rappi: "https://www.rappi.com.co/restaurantes/900469975-ryori-sushi-zion-house",
-  handle: "@ryorisushi.co",
   instagram: "https://www.instagram.com/ryorisushi.co",
-  facebook: "https://www.facebook.com/ryorisushi.co",
-  tiktok: "https://www.tiktok.com/@ryorisushi.co"
+  facebook: "https://www.facebook.com/profile.php?id=61583867097496",
+  tiktok: "https://www.tiktok.com/@ryori.sushi8"
 };
 
 const COMBOS = [

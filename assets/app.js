@@ -4,7 +4,7 @@
       order: "Pedir por WhatsApp", see_menu: "Ver menú", combos_eyebrow: "Promociones y combos", combos_title: "Nuestros barcos",
       combos_lede: "Una experiencia para compartir que combina sabor, frescura y arte.", menu_title: "Menú", spicy: "Picante",
       cop: "Precios en pesos colombianos (COP)", visit_eyebrow: "Gracias por elegirnos", visit_title: "Visítanos",
-      address: "Dirección", hours: "Horario", contact: "Pedidos",
+      address: "Dirección", hours: "Horario", contact: "Pedidos", follow: "Síguenos",
       add: "Agregar", cart: "Tu pedido", empty: "Tu pedido está vacío. Agrega platos del menú.", total: "Total",
       name: "Nombre", phone: "Teléfono", mode: "Entrega", delivery: "Domicilio", pickup: "Recoger en el local",
       addr: "Dirección de entrega", notes: "Notas (sabores de sushi para combos, sin picante, etc.)",
@@ -15,7 +15,7 @@
       order: "Order on WhatsApp", see_menu: "See menu", combos_eyebrow: "Promotions & combos", combos_title: "Our boats",
       combos_lede: "A shared experience combining flavor, freshness, and artistry.", menu_title: "Menu", spicy: "Spicy",
       cop: "Prices in Colombian pesos (COP)", visit_eyebrow: "Thank you for choosing us", visit_title: "Visit us",
-      address: "Address", hours: "Hours", contact: "Orders",
+      address: "Address", hours: "Hours", contact: "Orders", follow: "Follow us",
       add: "Add", cart: "Your order", empty: "Your order is empty. Add dishes from the menu.", total: "Total",
       name: "Name", phone: "Phone", mode: "Order type", delivery: "Delivery", pickup: "Pickup",
       addr: "Delivery address", notes: "Notes (sushi choices for combos, no spicy, etc.)",
@@ -203,7 +203,6 @@
     $("#addr").textContent = CONFIG.address[lang];
     $("#hrs").textContent = CONFIG.hours[lang];
     $("#ig").href = CONFIG.instagram; $("#fb").href = CONFIG.facebook; $("#tt").href = CONFIG.tiktok;
-    $("#handle").textContent = CONFIG.handle;
     $("#map").innerHTML = CONFIG.mapEmbed ? `<iframe src="${CONFIG.mapEmbed}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="map"></iframe>` : `<img src="assets/img/geisha.webp" alt="">`;
     $("#yr").textContent = new Date().getFullYear();
   }
