@@ -10,7 +10,7 @@
       addr: "Dirección de entrega", notes: "Notas (sabores de sushi para combos, sin picante, etc.)",
       pay: "Pago", cash: "Efectivo", transfer: "Transferencia / Nequi", card: "Tarjeta (datáfono)",
       send: "Enviar pedido por WhatsApp", rappi: "Pedir en Rappi", rappi_link: "Ver en Rappi", directions: "Cómo llegar", call: "Llamar", view: "Ver pedido", need: "Escribe tu nombre", needAddr: "Escribe la dirección de entrega",
-      delNote: "El costo del domicilio se confirma por WhatsApp.", msgHead: "Hola Ryori Sushi! Quiero hacer este pedido:" },
+      delNote: "Domicilio propio del restaurante. El costo se confirma por WhatsApp.", tripadvisor: "Califícanos en TripAdvisor", msgHead: "Hola Ryori Sushi! Quiero hacer este pedido:" },
     en: { nav_menu: "Menu", nav_combos: "Boats", nav_visit: "Visit", tagline: "Flavor · Tradition · Passion",
       order: "Order on WhatsApp", see_menu: "See menu", combos_eyebrow: "Promotions & combos", combos_title: "Our boats",
       combos_lede: "A shared experience combining flavor, freshness, and artistry.", menu_title: "Menu", spicy: "Spicy",
@@ -21,7 +21,7 @@
       addr: "Delivery address", notes: "Notes (sushi choices for combos, no spicy, etc.)",
       pay: "Payment", cash: "Cash", transfer: "Transfer / Nequi", card: "Card (on delivery)",
       send: "Send order on WhatsApp", rappi: "Order on Rappi", rappi_link: "View on Rappi", directions: "Get directions", call: "Call", view: "View order", need: "Enter your name", needAddr: "Enter the delivery address",
-      delNote: "Delivery fee is confirmed on WhatsApp.", msgHead: "Hi Ryori Sushi! I'd like to order:" }
+      delNote: "Delivered by our own team. Delivery fee is confirmed on WhatsApp.", tripadvisor: "Review us on TripAdvisor", msgHead: "Hi Ryori Sushi! I'd like to order:" }
   };
 
   const store = {
@@ -195,6 +195,8 @@
     document.querySelectorAll("[data-wa]").forEach(el => { el.href = wa.href; el.target = wa.target; });
     document.querySelectorAll("[data-rappi]").forEach(el => { el.href = CONFIG.rappi; if (!CONFIG.rappi) el.hidden = true; });
     document.querySelectorAll("[data-rappi-row]").forEach(el => el.hidden = !CONFIG.rappi);
+    $("#tripadvisorBtn").href = CONFIG.tripadvisor;
+    $("#tripadvisorBtn").hidden = !CONFIG.tripadvisor;
     $("#directionsBtn").href = isIOS
       ? `https://maps.apple.com/?daddr=${CONFIG.lat},${CONFIG.lng}`
       : `https://www.google.com/maps/dir/?api=1&destination=${CONFIG.lat},${CONFIG.lng}`;
