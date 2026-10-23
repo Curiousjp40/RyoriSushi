@@ -203,9 +203,15 @@ const MENU = [
   },
   {
     id: "bebidas", title: { es: "Bebidas", en: "Drinks" }, img: "assets/img/drinks.webp",
-    groups: [{ title: null, items: [
-      { name: { es: "Sodas Saborizadas", en: "Flavored Sodas" }, price: 14000,
-        desc: { es: "Curuba y romero · Lychee · Frutos rojos · Tamarindo. También productos Coca-Cola.", en: "Banana passionfruit & rosemary · Lychee · Mixed berries · Tamarind. Coca-Cola products also available." } }
-    ]}]
+    groups: [{ title: { es: "Sodas Saborizadas", en: "Flavored Sodas" }, items: [
+      { name: { es: "Soda de Curuba y Romero", en: "Banana Passionfruit & Rosemary Soda" }, price: 14000,
+        desc: { es: "Soda artesanal saborizada.", en: "House-made flavored soda." } },
+      { name: { es: "Soda de Lychee", en: "Lychee Soda" }, price: 14000,
+        desc: { es: "Soda artesanal saborizada.", en: "House-made flavored soda." } },
+      { name: { es: "Soda de Frutos Rojos", en: "Mixed Berries Soda" }, price: 14000,
+        desc: { es: "Soda artesanal saborizada.", en: "House-made flavored soda." } },
+      { name: { es: "Soda de Tamarindo", en: "Tamarind Soda" }, price: 14000,
+        desc: { es: "Soda artesanal saborizada.", en: "House-made flavored soda." } }
+    ], note: { es: "También tenemos productos Coca-Cola. Pídelos en las notas de tu pedido.", en: "Coca-Cola products also available. Add them in your order notes." } }]
   }
 ];

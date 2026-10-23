@@ -84,6 +84,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:.06em}
 .dish h4{color:#f15a6c;font-size:1.12rem;letter-spacing:.1em;text-transform:uppercase}
 .dots{flex:1;border-bottom:1px dotted #ffffff26;transform:translateY(-4px)}
 .dish p{color:var(--muted);font-size:.9rem;margin:.3rem 0 .6rem;max-width:62ch}
+.group-note{color:var(--muted);font-size:.85rem;margin-top:1rem}
 .chili{font-size:.9em}
 .badge-new{background:var(--red);color:#fff;font-size:.6rem;letter-spacing:.1em;padding:.15rem .4rem;border-radius:2px;vertical-align:middle}
 .legend{text-align:center;color:var(--muted);font-size:.8rem;margin-top:2.5rem}
