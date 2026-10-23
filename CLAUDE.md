@@ -22,10 +22,9 @@ Customers build a cart, fill name / phone / delivery or pickup / address / payme
 - [ ] Owner confirms prices and the Spanish text for Pastas/Postres (translated from the English menu)
 
 ## Deploy
-1. Cloudflare dashboard → Workers & Pages → Create → Pages → Connect to Git → pick this repo
-2. Framework preset: None. Build command: empty. Output directory: `/`
-3. Domain: Domain Registration → Register Domains → search `ryorisushi.co` (matches the @ryorisushi.co socials), fallback `ryorisushi.com`
-4. Pages project → Custom domains → add the domain (DNS is automatic since it's on Cloudflare)
+Live on Cloudflare Pages (project `ryorisushi`), custom domain `ryorisushizionhouse.com` plus `www`. Auto-deploys on every push to `main` — no build step, output is the repo root.
+
+The Google reviews workflow (`.github/workflows/google-reviews.yml`) still runs on GitHub Actions and commits `data/reviews.json` daily; that commit is a push to `main` too, so it triggers a Cloudflare redeploy the same way.
 
 ## Possible v2
 - Online payments (Wompi, Bold, or Mercado Pago) via a Cloudflare Pages Function
