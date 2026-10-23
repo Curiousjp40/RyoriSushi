@@ -112,7 +112,7 @@
 
   // ---------- promos ----------
   function renderPromos() {
-    $("#promosGrid").innerHTML = PROMOS.map((p, i) => `<div class="promo-card" data-promo="${i}"><img src="${p.image}" alt="${p.alt[lang]}" loading="lazy"></div>`).join("");
+    $("#promosGrid").innerHTML = PROMOS.map((p, i) => `<div class="promo-card" data-promo="${i}"><img class="promo-bg" src="${p.image}" alt="" loading="lazy"><img class="promo-fg" src="${p.image}" alt="${p.alt[lang]}" loading="lazy"></div>`).join("");
   }
   function goToPromo(p) {
     if (p.tab) { activeTab = p.tab; renderTabs(); renderMenu(); }

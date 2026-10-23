@@ -40,9 +40,10 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:.06em}
 .promos-head{text-align:center;margin-bottom:2rem}
 .promos-head h2{font-size:clamp(2rem,4vw,3rem);color:var(--gold)}
 .promos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1000px;margin:0 auto}
-.promo-card{cursor:pointer;aspect-ratio:4/5;background:#0b0909;border:1px solid var(--line);border-radius:4px;transition:border-color .15s}
-.promo-card:hover{border-color:var(--gold)}
-.promo-card img{width:100%;height:100%;display:block;object-fit:contain;object-position:center top}
+.promo-card{position:relative;cursor:pointer;aspect-ratio:4/5;overflow:hidden;border-radius:4px;box-shadow:0 10px 30px #0008;transition:box-shadow .15s}
+.promo-card:hover{box-shadow:0 14px 36px #000c}
+.promo-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(24px) brightness(.45);transform:scale(1.15)}
+.promo-fg{position:relative;display:block;width:100%;height:100%;object-fit:contain;object-position:center top}
 @media(max-width:640px){
   .promos-grid{display:flex;max-width:none;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:calc(clamp(16px,6vw,96px) * -1);padding-inline:12.5vw;scrollbar-width:none}
   .promo-card{flex:0 0 75vw;scroll-snap-align:center}
