@@ -9,7 +9,7 @@
       name: "Nombre", phone: "Teléfono", mode: "Entrega", delivery: "Domicilio", pickup: "Recoger en el local",
       addr: "Dirección de entrega", notes: "Notas (sabores de sushi para combos, sin picante, etc.)",
       pay: "Pago", cash: "Efectivo", transfer: "Transferencia / Nequi", card: "Tarjeta (datáfono)",
-      send: "Enviar pedido por WhatsApp", rappi: "Pedir en Rappi", rappi_link: "Ver en Rappi", view: "Ver pedido", need: "Escribe tu nombre", needAddr: "Escribe la dirección de entrega",
+      send: "Enviar pedido por WhatsApp", rappi: "Pedir en Rappi", rappi_link: "Ver en Rappi", directions: "Cómo llegar", call: "Llamar", view: "Ver pedido", need: "Escribe tu nombre", needAddr: "Escribe la dirección de entrega",
       delNote: "El costo del domicilio se confirma por WhatsApp.", msgHead: "Hola Ryori Sushi! Quiero hacer este pedido:" },
     en: { nav_menu: "Menu", nav_combos: "Boats", nav_visit: "Visit", tagline: "Flavor · Tradition · Passion",
       order: "Order on WhatsApp", see_menu: "See menu", combos_eyebrow: "Promotions & combos", combos_title: "Our boats",
@@ -20,7 +20,7 @@
       name: "Name", phone: "Phone", mode: "Order type", delivery: "Delivery", pickup: "Pickup",
       addr: "Delivery address", notes: "Notes (sushi choices for combos, no spicy, etc.)",
       pay: "Payment", cash: "Cash", transfer: "Transfer / Nequi", card: "Card (on delivery)",
-      send: "Send order on WhatsApp", rappi: "Order on Rappi", rappi_link: "View on Rappi", view: "View order", need: "Enter your name", needAddr: "Enter the delivery address",
+      send: "Send order on WhatsApp", rappi: "Order on Rappi", rappi_link: "View on Rappi", directions: "Get directions", call: "Call", view: "View order", need: "Enter your name", needAddr: "Enter the delivery address",
       delNote: "Delivery fee is confirmed on WhatsApp.", msgHead: "Hi Ryori Sushi! I'd like to order:" }
   };
 
@@ -35,6 +35,28 @@
   const fmt = n => "$" + n.toLocaleString("es-CO");
   const $ = s => document.querySelector(s);
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+  // ---------- platform ----------
+  const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  const isAndroid = /Android/.test(navigator.userAgent);
+  const isMobile = isIOS || isAndroid;
+  const isMac = !isMobile && navigator.platform === "MacIntel";
+  const isWindows = !isMobile && /Win/.test(navigator.platform);
+  const pf = isIOS ? "pf-ios" : isAndroid ? "pf-android" : isMac ? "pf-mac" : isWindows ? "pf-windows" : "";
+  document.documentElement.classList.add(isMobile ? "is-mobile" : "is-desktop");
+  if (pf) document.documentElement.classList.add(pf);
+
+  // ---------- whatsapp links ----------
+  function waLink(text) {
+    const q = encodeURIComponent(text);
+    return isMobile
+      ? { href: `https://wa.me/${CONFIG.whatsapp}?text=${q}`, target: "_self" }
+      : { href: `https://web.whatsapp.com/send?phone=${CONFIG.whatsapp}&text=${q}`, target: "_blank" };
+  }
+  function openWhatsApp(text) {
+    const wa = waLink(text);
+    if (wa.target === "_self") location.href = wa.href; else window.open(wa.href, "_blank", "noopener");
+  }
 
   // index every orderable item by key
   const ITEMS = {};
@@ -161,7 +183,7 @@
     const t = T[lang], err = drawer.querySelector("#err");
     if (!form.name.trim()) { err.textContent = t.need; return; }
     if (form.mode === "delivery" && !form.addr.trim()) { err.textContent = t.needAddr; return; }
-    window.open(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(buildMessage())}`, "_blank", "noopener");
+    openWhatsApp(buildMessage());
   });
 
   // ---------- static bits ----------
@@ -169,10 +191,14 @@
     document.documentElement.lang = lang;
     document.querySelectorAll("[data-i18n]").forEach(el => el.textContent = T[lang][el.dataset.i18n]);
     $("#langBtn").textContent = lang === "es" ? "EN" : "ES";
-    const wa = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(CONFIG.whatsappMessage[lang])}`;
-    document.querySelectorAll("[data-wa]").forEach(el => el.href = wa);
+    const wa = waLink(CONFIG.whatsappMessage[lang]);
+    document.querySelectorAll("[data-wa]").forEach(el => { el.href = wa.href; el.target = wa.target; });
     document.querySelectorAll("[data-rappi]").forEach(el => { el.href = CONFIG.rappi; if (!CONFIG.rappi) el.hidden = true; });
     document.querySelectorAll("[data-rappi-row]").forEach(el => el.hidden = !CONFIG.rappi);
+    $("#directionsBtn").href = isIOS
+      ? `https://maps.apple.com/?daddr=${CONFIG.lat},${CONFIG.lng}`
+      : `https://www.google.com/maps/dir/?api=1&destination=${CONFIG.lat},${CONFIG.lng}`;
+    $("#callBtn").href = "tel:+" + CONFIG.whatsapp;
     $("#waText").textContent = "+" + CONFIG.whatsapp.replace(/^(\d{2})(\d{3})(\d{3})(\d+)$/, "$1 $2 $3 $4");
     $("#addr").textContent = CONFIG.address[lang];
     $("#hrs").textContent = CONFIG.hours[lang];

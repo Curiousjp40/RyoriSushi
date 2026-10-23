@@ -20,6 +20,9 @@ const CONFIG = {
     es: "Lunes a jueves · 3:00 – 10:30 PM\nViernes y sábado · 1:00 – 11:00 PM\nDomingo · 1:00 – 10:00 PM",
     en: "Monday to Thursday · 3:00 – 10:30 PM\nFriday & Saturday · 1:00 – 11:00 PM\nSunday · 1:00 – 10:00 PM"
   },
+  // Coordinates (keep in sync with mapEmbed below) — used for the directions button
+  lat: 6.2549258,
+  lng: -75.6031431,
   // Google Maps embed URL (Maps > Share > Embed a map > copy the src). Leave "" to hide.
   mapEmbed: "https://maps.google.com/maps?q=6.2549258,-75.6031431&z=17&output=embed",
   // Rappi store page (leave "" to hide the Rappi buttons)
