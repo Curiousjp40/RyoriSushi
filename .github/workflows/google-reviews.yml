@@ -64,4 +64,5 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/reviews.json
           git commit -m "Update Google reviews [skip ci]"
-          git push
+          # actions/checkout leaves HEAD detached, so push with an explicit refspec
+          git push origin HEAD:${{ github.ref_name }}
