@@ -36,7 +36,7 @@
   };
 
   let lang = store.get("ryori_lang_v2", "es"); // always Spanish unless the visitor tapped EN
-  let cart = store.get("ryori_cart", {}); // key -> qty
+  let cart = store.get("ryori_cart_v2", {}); // key -> qty (v2: Entradas groups reordered, old position-keys would point at the wrong dish)
   let REVIEWS = null; // loaded async from data/reviews.json
   let activeTab = MENU[0].id;
   const fmt = n => "$" + n.toLocaleString("es-CO");
@@ -218,7 +218,7 @@
   function change(k, d) {
     cart[k] = (cart[k] || 0) + d;
     if (cart[k] <= 0) delete cart[k];
-    store.set("ryori_cart", cart); renderCart();
+    store.set("ryori_cart_v2", cart); renderCart();
   }
   const open = () => { document.body.classList.add("cart-open"); };
   const close = () => { document.body.classList.remove("cart-open"); };

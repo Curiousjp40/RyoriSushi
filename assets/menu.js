@@ -111,12 +111,6 @@ const MENU = [
   {
     id: "entradas", title: { es: "Entradas", en: "Appetizers" }, img: "assets/img/gunkan.webp",
     groups: [
-      { title: null, items: [
-        { name: { es: "Calamar en Panko", en: "Panko Crusted Calamari" }, price: 15000,
-          desc: { es: "Calamar apanado en panko, bañado en reducción de gulupa. Se sirve con salsa teriyaki o reducción de gulupa.", en: "Calamari breaded in panko, drizzled with a passion fruit (gulupa) reduction. Served with teriyaki sauce or passion fruit reduction." } },
-        { name: { es: "Kanikama en Panko", en: "Panko Crusted Kanikama" }, price: 14000,
-          desc: { es: "Palitos de kanikama apanados en panko, rellenos de queso fundido, acompañados de salsa teriyaki y mix de ajonjolí.", en: "Panko-breaded kanikama (crab stick) sticks filled with melted cheese, served with teriyaki sauce and a sesame seed mix." } }
-      ]},
       { title: { es: "Gunkans", en: "Gunkan" }, items: [
         { name: { es: "Gunkans de Pollo", en: "Chicken Gunkan" }, price: 13000,
           desc: { es: "Tres unidades de gunkans envueltos en maduro o nori, con pollo glaseado en salsa teriyaki.", en: "Three gunkan pieces wrapped in ripe plantain or nori, with chicken glazed in teriyaki sauce." } },
@@ -126,6 +120,12 @@ const MENU = [
           desc: { es: "Tres unidades de gunkans envueltos en maduro o nori, con carne glaseada en salsa teriyaki.", en: "Three gunkan pieces wrapped in ripe plantain or nori, with beef glazed in teriyaki sauce." } },
         { name: { es: "Gunkans de Salmón Ahumado", en: "Smoked Salmon Gunkan" }, price: 16000,
           desc: { es: "Tres unidades de gunkans envueltos en maduro o nori, con topping de tartar de salmón ahumado, terminado con skin de salmón, mix de ajonjolí y salsa teriyaki.", en: "Three gunkan pieces wrapped in ripe plantain or nori, topped with smoked salmon tartare, finished with salmon skin, sesame seed mix, and teriyaki sauce." } }
+      ]},
+      { title: null, items: [
+        { name: { es: "Calamar en Panko", en: "Panko Crusted Calamari" }, price: 15000,
+          desc: { es: "Calamar apanado en panko, bañado en reducción de gulupa. Se sirve con salsa teriyaki o reducción de gulupa.", en: "Calamari breaded in panko, drizzled with a passion fruit (gulupa) reduction. Served with teriyaki sauce or passion fruit reduction." } },
+        { name: { es: "Kanikama en Panko", en: "Panko Crusted Kanikama" }, price: 14000,
+          desc: { es: "Palitos de kanikama apanados en panko, rellenos de queso fundido, acompañados de salsa teriyaki y mix de ajonjolí.", en: "Panko-breaded kanikama (crab stick) sticks filled with melted cheese, served with teriyaki sauce and a sesame seed mix." } }
       ]},
       { title: { es: "Nigiris", en: "Nigiri" }, items: [
         { name: { es: "Nigiri de Kanikama", en: "Kanikama Nigiri" }, price: 13000, spicy: true,
