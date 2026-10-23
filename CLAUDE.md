@@ -15,7 +15,8 @@ Customers build a cart, fill name / phone / delivery or pickup / address / payme
 ## Before going live (TODO)
 - [x] WhatsApp number (+57 314 7196115, from Google Maps listing; confirm it takes WhatsApp)
 - [x] Address + map (Cra. 86 #45B-16, La América)
-- [ ] Confirm full hours (Google only shows "closes 10:30 PM")
+- [x] Hours (from Google Maps): Mon-Thu 3-10:30 PM, Fri-Sat 1-11 PM, Sun 1-10 PM
+- [x] Rappi link added (CONFIG.rappi).
 - [ ] Confirm Facebook/TikTok URLs (assumed `ryorisushi.co` handle everywhere)
 - [ ] Owner confirms prices and the Spanish text for Pastas/Postres (translated from the English menu)
 

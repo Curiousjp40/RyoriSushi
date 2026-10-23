@@ -16,10 +16,14 @@ const CONFIG = {
     en: "Hi Ryori Sushi! I'd like to place an order."
   },
   address: { es: "Cra. 86 #45B-16, La América, Medellín, Antioquia", en: "Cra. 86 #45B-16, La América, Medellín, Antioquia" },
-  // TODO: confirm full schedule (Google shows closing at 10:30 PM)
-  hours: { es: "Todos los días · hasta las 10:30 PM", en: "Every day · until 10:30 PM" },
+  hours: {
+    es: "Lunes a jueves · 3:00 – 10:30 PM\nViernes y sábado · 1:00 – 11:00 PM\nDomingo · 1:00 – 10:00 PM",
+    en: "Monday to Thursday · 3:00 – 10:30 PM\nFriday & Saturday · 1:00 – 11:00 PM\nSunday · 1:00 – 10:00 PM"
+  },
   // Google Maps embed URL (Maps > Share > Embed a map > copy the src). Leave "" to hide.
   mapEmbed: "https://maps.google.com/maps?q=6.2549258,-75.6031431&z=17&output=embed",
+  // Rappi store page (leave "" to hide the Rappi buttons)
+  rappi: "https://www.rappi.com.co/restaurantes/900469975-ryori-sushi-zion-house",
   handle: "@ryorisushi.co",
   instagram: "https://www.instagram.com/ryorisushi.co",
   facebook: "https://www.facebook.com/ryorisushi.co",

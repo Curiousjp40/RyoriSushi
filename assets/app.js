@@ -9,7 +9,7 @@
       name: "Nombre", phone: "Teléfono", mode: "Entrega", delivery: "Domicilio", pickup: "Recoger en el local",
       addr: "Dirección de entrega", notes: "Notas (sabores de sushi para combos, sin picante, etc.)",
       pay: "Pago", cash: "Efectivo", transfer: "Transferencia / Nequi", card: "Tarjeta (datáfono)",
-      send: "Enviar pedido por WhatsApp", view: "Ver pedido", need: "Escribe tu nombre", needAddr: "Escribe la dirección de entrega",
+      send: "Enviar pedido por WhatsApp", rappi: "Pedir en Rappi", rappi_link: "Ver en Rappi", view: "Ver pedido", need: "Escribe tu nombre", needAddr: "Escribe la dirección de entrega",
       delNote: "El costo del domicilio se confirma por WhatsApp.", msgHead: "Hola Ryori Sushi! Quiero hacer este pedido:" },
     en: { nav_menu: "Menu", nav_combos: "Boats", nav_visit: "Visit", tagline: "Flavor · Tradition · Passion",
       order: "Order on WhatsApp", see_menu: "See menu", combos_eyebrow: "Promotions & combos", combos_title: "Our boats",
@@ -20,7 +20,7 @@
       name: "Name", phone: "Phone", mode: "Order type", delivery: "Delivery", pickup: "Pickup",
       addr: "Delivery address", notes: "Notes (sushi choices for combos, no spicy, etc.)",
       pay: "Payment", cash: "Cash", transfer: "Transfer / Nequi", card: "Card (on delivery)",
-      send: "Send order on WhatsApp", view: "View order", need: "Enter your name", needAddr: "Enter the delivery address",
+      send: "Send order on WhatsApp", rappi: "Order on Rappi", rappi_link: "View on Rappi", view: "View order", need: "Enter your name", needAddr: "Enter the delivery address",
       delNote: "Delivery fee is confirmed on WhatsApp.", msgHead: "Hi Ryori Sushi! I'd like to order:" }
   };
 
@@ -29,7 +29,7 @@
     set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }
   };
 
-  let lang = store.get("ryori_lang", (navigator.language || "es").startsWith("en") ? "en" : "es");
+  let lang = store.get("ryori_lang_v2", "es"); // always Spanish unless the visitor tapped EN
   let cart = store.get("ryori_cart", {}); // key -> qty
   let activeTab = MENU[0].id;
   const fmt = n => "$" + n.toLocaleString("es-CO");
@@ -171,6 +171,8 @@
     $("#langBtn").textContent = lang === "es" ? "EN" : "ES";
     const wa = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(CONFIG.whatsappMessage[lang])}`;
     document.querySelectorAll("[data-wa]").forEach(el => el.href = wa);
+    document.querySelectorAll("[data-rappi]").forEach(el => { el.href = CONFIG.rappi; if (!CONFIG.rappi) el.hidden = true; });
+    document.querySelectorAll("[data-rappi-row]").forEach(el => el.hidden = !CONFIG.rappi);
     $("#waText").textContent = "+" + CONFIG.whatsapp.replace(/^(\d{2})(\d{3})(\d{3})(\d+)$/, "$1 $2 $3 $4");
     $("#addr").textContent = CONFIG.address[lang];
     $("#hrs").textContent = CONFIG.hours[lang];
@@ -181,6 +183,6 @@
   }
 
   function renderAll() { renderStatic(); renderCombos(); renderTabs(); renderMenu(); renderCart(); }
-  $("#langBtn").addEventListener("click", () => { lang = lang === "es" ? "en" : "es"; store.set("ryori_lang", lang); renderAll(); });
+  $("#langBtn").addEventListener("click", () => { lang = lang === "es" ? "en" : "es"; store.set("ryori_lang_v2", lang); renderAll(); });
   renderAll();
 })();
