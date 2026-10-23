@@ -35,6 +35,19 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:.06em}
 .btn.red{background:var(--red);color:#fff}.btn.red:hover{background:var(--red2)}
 .btn.ghost{border:1px solid var(--gold);color:var(--gold)}.btn.ghost:hover{background:var(--gold);color:var(--ink)}
 
+/* promos */
+.promos{padding:clamp(48px,8vw,96px) clamp(16px,6vw,96px);background:var(--ink2)}
+.promos-head{text-align:center;margin-bottom:2rem}
+.promos-head h2{font-size:clamp(2rem,4vw,3rem);color:var(--gold)}
+.promos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.promo-card{cursor:pointer;border-radius:4px;overflow:hidden;border:1px solid var(--line);transition:border-color .15s}
+.promo-card:hover{border-color:var(--gold)}
+.promo-card img{width:100%;height:auto;display:block}
+@media(max-width:640px){
+  .promos-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:-16px;padding-inline:16px;scrollbar-width:none}
+  .promo-card{flex:0 0 80vw;scroll-snap-align:start}
+}
+
 /* combos */
 .combos{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(24px,5vw,72px);padding:clamp(64px,10vw,120px) clamp(16px,6vw,96px);background:var(--ink2);align-items:center}
 .combos-img img{width:100%;border-radius:2px;box-shadow:0 30px 80px #000a}
@@ -71,6 +84,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:.06em}
 .dots{flex:1;border-bottom:1px dotted #ffffff26;transform:translateY(-4px)}
 .dish p{color:var(--muted);font-size:.9rem;margin:.3rem 0 .6rem;max-width:62ch}
 .chili{font-size:.9em}
+.badge-new{background:var(--red);color:#fff;font-size:.6rem;letter-spacing:.1em;padding:.15rem .4rem;border-radius:2px;vertical-align:middle}
 .legend{text-align:center;color:var(--muted);font-size:.8rem;margin-top:2.5rem}
 @media(max-width:860px){.section{grid-template-columns:1fr}.section-img{position:static}.section-img img{max-height:280px}}
 

@@ -3,8 +3,10 @@
    ------------------------------------------------------------
    1. CONFIG:  phone, address, hours, social links
    2. GALLERY: photo filenames, in display order
-   3. COMBOS:  the boats / combo deals
-   4. MENU:    every section and dish (es + en)
+   3. PROMOS:  homepage "Novedades" poster cards
+   4. COMBOS:  the boats / combo deals
+   5. MENU:    every section and dish (es + en)
+   isNew: true on a MENU item adds a small "NUEVO"/"NEW" badge
    Prices are COP numbers, the site formats them as $23.000
    spicy: true adds the chili icon
 
@@ -58,7 +60,27 @@ const GALLERY = [
   "assets/img/gallery/07-calamari-avocado.webp",
   "assets/img/gallery/08-tower.webp",
   "assets/img/gallery/09-roll-dip.webp",
-  "assets/img/gallery/10-salmon.webp"
+  "assets/img/gallery/10-salmon.webp",
+  "assets/img/gallery/11-dessert-drizzle.webp",
+  "assets/img/gallery/12-dessert-tower.webp",
+  "assets/img/gallery/13-roll-chopsticks.webp",
+  "assets/img/gallery/14-nigiri-chopsticks.webp",
+  "assets/img/gallery/15-smoke-service.webp",
+  "assets/img/gallery/16-nitrogen-pour.webp"
+];
+
+// Homepage promo posters. tab: switches the menu to that tab and scrolls there.
+// scroll: scrolls straight to that section id. Reorder/swap freely.
+const PROMOS = [
+  { image: "assets/img/promo/promo-arroz-cantones.webp",
+    alt: { es: "Promoción del nuevo Arroz Cantonés, $26.000", en: "Promo for the new Cantonese Rice, $26,000" },
+    tab: "arroces" },
+  { image: "assets/img/promo/promo-nigiri.webp",
+    alt: { es: "Promoción de nigiris: fresco, simple, perfecto", en: "Nigiri promo: fresh, simple, perfect" },
+    tab: "entradas" },
+  { image: "assets/img/promo/promo-compartir.webp",
+    alt: { es: "Promoción de platos para compartir: experiencias para recordar", en: "Sharing platters promo: experiences to remember" },
+    scroll: "combos" }
 ];
 
 const COMBOS = [
@@ -158,6 +180,8 @@ const MENU = [
         desc: { es: "Arroz salteado al wok con pollo, camarón, tocineta, maíz, zanahoria, zucchini, brócoli, cebollín y raíz china en salsa de soya y teriyaki.", en: "Wok-fried rice with chicken, shrimp, bacon, corn, carrot, zucchini, broccoli, scallion, and Chinese water chestnut in soy and teriyaki sauce." } },
       { name: { es: "Arroz Kiro", en: "Kiro Rice" }, price: 28000,
         desc: { es: "Arroz salteado al wok con pollo, carne, cerdo, camarón, zanahoria, zucchini, brócoli, cebollín y raíz china en salsa de soya y teriyaki.", en: "Wok-fried rice with chicken, beef, pork, shrimp, carrot, zucchini, broccoli, scallion, and Chinese water chestnut in soy and teriyaki sauce." } },
+      { name: { es: "Arroz Cantonés", en: "Cantonese Rice" }, price: 26000, isNew: true,
+        desc: { es: "Arroz salteado al wok con pollo, carne y cerdo, zanahoria, brócoli y zucchini, coronado con vermicelli de arroz fritos.", en: "Wok-fried rice with chicken, beef, and pork, carrot, broccoli, and zucchini, topped with crispy fried rice vermicelli." } },
       { name: { es: "Arroz Thai", en: "Thai Rice" }, price: 35000,
         desc: { es: "Arroz cremoso al wok con camarón, calamar, palmito de cangrejo, cebollín y raíz china en crema de coco y salsa teriyaki, coronado con camarones apanados en panko y terminado con ajonjolí.", en: "Creamy wok-fried rice with shrimp, calamari, crab-stick heart of palm, scallion, and Chinese water chestnut in coconut cream and teriyaki sauce, topped with panko-crusted shrimp and finished with sesame seeds." } }
     ]}]

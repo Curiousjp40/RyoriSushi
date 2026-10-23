@@ -1,7 +1,7 @@
 (() => {
   const T = {
     es: { nav_menu: "Menú", nav_combos: "Barcos", nav_gallery: "Galería", nav_reviews: "Reseñas", nav_visit: "Visítanos", tagline: "Sabor · Tradición · Pasión",
-      order_now: "Hacer pedido", menu_note: "Arma tu pedido aquí y envíalo por WhatsApp al finalizar", combos_eyebrow: "Promociones y combos", combos_title: "Nuestros barcos",
+      order_now: "Hacer pedido", menu_note: "Arma tu pedido aquí y envíalo por WhatsApp al finalizar", promos_title: "Novedades", new_badge: "NUEVO", combos_eyebrow: "Promociones y combos", combos_title: "Nuestros barcos",
       combos_lede: "Una experiencia para compartir que combina sabor, frescura y arte.", menu_title: "Menú", spicy: "Picante",
       cop: "Precios en pesos colombianos (COP)", gallery_title: "Galería", reviews_title: "Reseñas", reviews_count: "reseñas",
       see_more: "Ver más", see_less: "Ver menos", write_review: "Déjanos tu reseña en Google", reviews_by_google: "Reseñas de Google",
@@ -15,7 +15,7 @@
       send: "Enviar pedido por WhatsApp", directions: "Cómo llegar", call: "Llamar", view: "Ver pedido", need: "Escribe tu nombre", needAddr: "Escribe la dirección de entrega",
       delNote: "Domicilio propio del restaurante. El costo se confirma por WhatsApp.", tripadvisor: "Califícanos en TripAdvisor", msgHead: "Hola Ryori Sushi! Quiero hacer este pedido:" },
     en: { nav_menu: "Menu", nav_combos: "Boats", nav_gallery: "Gallery", nav_reviews: "Reviews", nav_visit: "Visit", tagline: "Flavor · Tradition · Passion",
-      order_now: "Order now", menu_note: "Build your order here and send it on WhatsApp at checkout.", combos_eyebrow: "Promotions & combos", combos_title: "Our boats",
+      order_now: "Order now", menu_note: "Build your order here and send it on WhatsApp at checkout.", promos_title: "What's new", new_badge: "NEW", combos_eyebrow: "Promotions & combos", combos_title: "Our boats",
       combos_lede: "A shared experience combining flavor, freshness, and artistry.", menu_title: "Menu", spicy: "Spicy",
       cop: "Prices in Colombian pesos (COP)", gallery_title: "Gallery", reviews_title: "Reviews", reviews_count: "reviews",
       see_more: "See more", see_less: "See less", write_review: "Leave us a review on Google", reviews_by_google: "Reviews by Google",
@@ -101,13 +101,22 @@
             ${g.title ? `<h3 class="group">${g.title[lang]}</h3>` : ""}
             ${g.items.map((it, ii) => `
               <div class="dish">
-                <div class="dish-top"><h4>${it.name[lang]}${it.spicy ? ' <span class="chili">🌶</span>' : ""}</h4><span class="dots"></span><span class="price">${fmt(it.price)}</span></div>
+                <div class="dish-top"><h4>${it.name[lang]}${it.spicy ? ' <span class="chili">🌶</span>' : ""}${it.isNew ? ` <span class="badge-new">${T[lang].new_badge}</span>` : ""}</h4><span class="dots"></span><span class="price">${fmt(it.price)}</span></div>
                 <p>${it.desc[lang]}</p>
                 ${addBtn(`${s.id}-${gi}-${ii}`)}
               </div>`).join("")}
           `).join("")}
         </div>
       </div>`;
+  }
+
+  // ---------- promos ----------
+  function renderPromos() {
+    $("#promosGrid").innerHTML = PROMOS.map((p, i) => `<div class="promo-card" data-promo="${i}"><img src="${p.image}" alt="${p.alt[lang]}" loading="lazy"></div>`).join("");
+  }
+  function goToPromo(p) {
+    if (p.tab) { activeTab = p.tab; renderTabs(); renderMenu(); }
+    $("#" + (p.tab ? "menu" : p.scroll)).scrollIntoView({ behavior: "smooth" });
   }
 
   // ---------- gallery ----------
@@ -231,6 +240,7 @@
     const i = e.target.closest("[data-inc]"); if (i) return change(i.dataset.inc, 1);
     const d = e.target.closest("[data-dec]"); if (d) return change(d.dataset.dec, -1);
     const tb = e.target.closest("[data-tab]"); if (tb) { activeTab = tb.dataset.tab; renderTabs(); renderMenu(); return; }
+    const pc = e.target.closest("[data-promo]"); if (pc) return goToPromo(PROMOS[+pc.dataset.promo]);
     const g = e.target.closest("[data-gallery]"); if (g) return openLightbox(g.src);
     if (e.target.closest("#lightbox")) return closeLightbox();
     const rm = e.target.closest(".review-more"); if (rm) {
@@ -280,7 +290,7 @@
     $("#yr").textContent = new Date().getFullYear();
   }
 
-  function renderAll() { renderStatic(); renderChef(); renderCombos(); renderTabs(); renderMenu(); renderGallery(); renderReviews(); renderCart(); }
+  function renderAll() { renderStatic(); renderChef(); renderPromos(); renderCombos(); renderTabs(); renderMenu(); renderGallery(); renderReviews(); renderCart(); }
   $("#langBtn").addEventListener("click", () => { lang = lang === "es" ? "en" : "es"; store.set("ryori_lang_v2", lang); renderAll(); });
   renderAll();
 
