@@ -121,7 +121,7 @@ const MENU = [
         { name: { es: "Gunkans de Salmón Ahumado", en: "Smoked Salmon Gunkan" }, price: 16000,
           desc: { es: "Tres unidades de gunkans envueltos en maduro o nori, con topping de tartar de salmón ahumado, terminado con skin de salmón, mix de ajonjolí y salsa teriyaki.", en: "Three gunkan pieces wrapped in ripe plantain or nori, topped with smoked salmon tartare, finished with salmon skin, sesame seed mix, and teriyaki sauce." } }
       ]},
-      { title: null, items: [
+      { title: { es: "Apanados en Panko", en: "Panko Crusted" }, items: [
         { name: { es: "Calamar en Panko", en: "Panko Crusted Calamari" }, price: 15000,
           desc: { es: "Calamar apanado en panko, bañado en reducción de gulupa. Se sirve con salsa teriyaki o reducción de gulupa.", en: "Calamari breaded in panko, drizzled with a passion fruit (gulupa) reduction. Served with teriyaki sauce or passion fruit reduction." } },
         { name: { es: "Kanikama en Panko", en: "Panko Crusted Kanikama" }, price: 14000,
