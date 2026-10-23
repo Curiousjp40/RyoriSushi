@@ -33,7 +33,6 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:.06em}
 .cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2rem}
 .btn{display:inline-block;padding:.9rem 1.5rem;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;font-weight:500;transition:.2s}
 .btn.red{background:var(--red);color:#fff}.btn.red:hover{background:var(--red2)}
-.btn.rappi{background:#ff441f;color:#fff}.btn.rappi:hover{background:#e0360f}
 .btn.ghost{border:1px solid var(--gold);color:var(--gold)}.btn.ghost:hover{background:var(--gold);color:var(--ink)}
 
 /* combos */

@@ -29,8 +29,6 @@ const CONFIG = {
   lng: -75.6031431,
   // Google Maps embed URL (Maps > Share > Embed a map > copy the src). Leave "" to hide.
   mapEmbed: "https://maps.google.com/maps?q=6.2549258,-75.6031431&z=17&output=embed",
-  // Rappi store page (leave "" to hide the Rappi buttons)
-  rappi: "https://www.rappi.com.co/restaurantes/900469975-ryori-sushi-zion-house",
   // TripAdvisor "write a review" link (leave "" to hide the review button)
   tripadvisor: "https://www.tripadvisor.com/UserReviewEdit-g297478-d34664505",
   // TripAdvisor reviews page — not linked anywhere yet, for a future "see reviews" button

@@ -11,7 +11,7 @@
       name: "Nombre", phone: "Teléfono", mode: "Entrega", delivery: "Domicilio", pickup: "Recoger en el local",
       addr: "Dirección de entrega", notes: "Notas (sabores de sushi para combos, sin picante, etc.)",
       pay: "Pago", cash: "Efectivo", transfer: "Transferencia / Nequi", card: "Tarjeta (datáfono)",
-      send: "Enviar pedido por WhatsApp", rappi: "Pedir en Rappi", rappi_link: "Ver en Rappi", directions: "Cómo llegar", call: "Llamar", view: "Ver pedido", need: "Escribe tu nombre", needAddr: "Escribe la dirección de entrega",
+      send: "Enviar pedido por WhatsApp", directions: "Cómo llegar", call: "Llamar", view: "Ver pedido", need: "Escribe tu nombre", needAddr: "Escribe la dirección de entrega",
       delNote: "Domicilio propio del restaurante. El costo se confirma por WhatsApp.", tripadvisor: "Califícanos en TripAdvisor", msgHead: "Hola Ryori Sushi! Quiero hacer este pedido:" },
     en: { nav_menu: "Menu", nav_combos: "Boats", nav_gallery: "Gallery", nav_reviews: "Reviews", nav_visit: "Visit", tagline: "Flavor · Tradition · Passion",
       order: "Order on WhatsApp", see_menu: "See menu", combos_eyebrow: "Promotions & combos", combos_title: "Our boats",
@@ -24,7 +24,7 @@
       name: "Name", phone: "Phone", mode: "Order type", delivery: "Delivery", pickup: "Pickup",
       addr: "Delivery address", notes: "Notes (sushi choices for combos, no spicy, etc.)",
       pay: "Payment", cash: "Cash", transfer: "Transfer / Nequi", card: "Card (on delivery)",
-      send: "Send order on WhatsApp", rappi: "Order on Rappi", rappi_link: "View on Rappi", directions: "Get directions", call: "Call", view: "View order", need: "Enter your name", needAddr: "Enter the delivery address",
+      send: "Send order on WhatsApp", directions: "Get directions", call: "Call", view: "View order", need: "Enter your name", needAddr: "Enter the delivery address",
       delNote: "Delivered by our own team. Delivery fee is confirmed on WhatsApp.", tripadvisor: "Review us on TripAdvisor", msgHead: "Hi Ryori Sushi! I'd like to order:" }
   };
 
@@ -251,8 +251,6 @@
     $("#langBtn").textContent = lang === "es" ? "EN" : "ES";
     const wa = waLink(CONFIG.whatsappMessage[lang]);
     document.querySelectorAll("[data-wa]").forEach(el => { el.href = wa.href; el.target = wa.target; });
-    document.querySelectorAll("[data-rappi]").forEach(el => { el.href = CONFIG.rappi; if (!CONFIG.rappi) el.hidden = true; });
-    document.querySelectorAll("[data-rappi-row]").forEach(el => el.hidden = !CONFIG.rappi);
     $("#tripadvisorBtn").href = CONFIG.tripadvisor;
     $("#tripadvisorBtn").hidden = !CONFIG.tripadvisor;
     $("#directionsBtn").href = isIOS

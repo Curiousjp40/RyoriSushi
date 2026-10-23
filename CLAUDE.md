@@ -16,7 +16,7 @@ Customers build a cart, fill name / phone / delivery or pickup / address / payme
 - [x] WhatsApp number +57 314 7196115 confirmed (Ryori Sushi business profile)
 - [x] Address + map (Cra. 86 #45B-16, La América)
 - [x] Hours confirmed (from Google Maps): Mon-Thu 3:00-10:30 PM, Fri-Sat 1:00-11:00 PM, Sun 1:00-10:00 PM
-- [x] Rappi link added (CONFIG.rappi).
+- [x] Rappi removed (no longer offered)
 - [x] Facebook/TikTok/Instagram confirmed (see CONFIG in menu.js)
 - [ ] Ask owner about possible Comuna 13 location (mentioned in Instagram bio)
 - [ ] Owner confirms prices and the Spanish text for Pastas/Postres (translated from the English menu)
