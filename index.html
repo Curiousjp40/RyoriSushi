@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ryori Sushi · Zion House</title>
+<meta name="description" content="Ryori Sushi Zion House. Sushi rolls, gunkans, nigiris, barcos, arroces y pastas al wok. Sabor, tradición, pasión.">
+<meta property="og:title" content="Ryori Sushi · Zion House">
+<meta property="og:description" content="Sabor · Tradición · Pasión. Mira nuestro menú y pide por WhatsApp.">
+<meta property="og:image" content="assets/img/boat.webp">
+<link rel="icon" href="assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Montserrat:wght@300;400;500;600&family=Noto+Serif+JP:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="nav" id="top">
+  <a class="brand" href="#top"><img src="assets/img/logo.webp" alt="Ryori Sushi Zion House"></a>
+  <nav class="links">
+    <a href="#menu" data-i18n="nav_menu">Menú</a>
+    <a href="#combos" data-i18n="nav_combos">Barcos</a>
+    <a href="#visit" data-i18n="nav_visit">Visítanos</a>
+  </nav>
+  <button class="lang" id="langBtn" aria-label="Change language">EN</button>
+</header>
+
+<section class="hero">
+  <img class="hero-bg" src="assets/img/hero.webp" alt="">
+  <div class="hero-inner">
+    <p class="kanji">料理と情熱</p>
+    <h1>Ryori Sushi</h1>
+    <p class="sub">Zion House</p>
+    <p class="tag" data-i18n="tagline">Sabor · Tradición · Pasión</p>
+    <div class="cta">
+      <a class="btn red" data-wa href="#" target="_blank" rel="noopener" data-i18n="order">Pedir por WhatsApp</a>
+      <a class="btn ghost" href="#menu" data-i18n="see_menu">Ver menú</a>
+    </div>
+  </div>
+</section>
+
+<section class="combos" id="combos">
+  <div class="combos-img"><img src="assets/img/boat.webp" alt="" loading="lazy"></div>
+  <div class="combos-body">
+    <p class="eyebrow" data-i18n="combos_eyebrow">Promociones y combos</p>
+    <h2 data-i18n="combos_title">Nuestros barcos</h2>
+    <p class="lede" data-i18n="combos_lede">Una experiencia para compartir que combina sabor, frescura y arte.</p>
+    <div id="comboList"></div>
+  </div>
+</section>
+
+<section class="menu" id="menu">
+  <div class="menu-head">
+    <p class="eyebrow">寿司</p>
+    <h2 data-i18n="menu_title">Menú</h2>
+  </div>
+  <div class="tabs" id="tabs"></div>
+  <div id="menuBody"></div>
+  <p class="legend"><span class="chili">🌶</span> <span data-i18n="spicy">Picante</span> · <span data-i18n="cop">Precios en pesos colombianos (COP)</span></p>
+</section>
+
+<section class="visit" id="visit">
+  <div class="visit-card">
+    <p class="eyebrow" data-i18n="visit_eyebrow">Gracias por elegirnos</p>
+    <h2 data-i18n="visit_title">Visítanos</h2>
+    <dl>
+      <dt data-i18n="address">Dirección</dt><dd id="addr"></dd>
+      <dt data-i18n="hours">Horario</dt><dd id="hrs"></dd>
+      <dt data-i18n="contact">Pedidos</dt><dd><a data-wa href="#" target="_blank" rel="noopener" id="waText"></a></dd>
+    </dl>
+    <div class="social">
+      <a id="ig" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" class="dot"/></svg></a>
+      <a id="fb" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z"/></svg></a>
+      <a id="tt" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M15 3c.4 2.6 2 4.2 4.5 4.4v3.3c-1.6 0-3.1-.5-4.5-1.4v6.2A5.5 5.5 0 1 1 9.5 10v3.4a2.2 2.2 0 1 0 2.2 2.2V3H15z"/></svg></a>
+      <span class="handle" id="handle"></span>
+    </div>
+  </div>
+  <div class="map" id="map"></div>
+</section>
+
+<footer>
+  <p>© <span id="yr"></span> Ryori Sushi · Zion House</p>
+</footer>
+
+<a class="wa-float" data-wa href="#" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .3-3.4-.7-2.9-1.2-4.7-4.1-4.8-4.3-.1-.2-1.2-1.6-1.2-3s.7-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.4.5c-.1.2-.3.3-.1.6.2.3.8 1.4 1.8 2.2 1.2 1.1 2.3 1.4 2.6 1.6.3.1.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.7-.1 1.3z"/></svg>
+</a>
+
+<script src="assets/menu.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
