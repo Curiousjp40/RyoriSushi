@@ -52,15 +52,12 @@ const CONFIG = {
 // Gallery photos, in the order they're shown — add/remove/reorder here
 const GALLERY = [
   "assets/img/gallery/01-platter-smoke.webp",
-  "assets/img/gallery/02-rolls-duo.webp",
-  "assets/img/gallery/03-smoked-roll.webp",
   "assets/img/gallery/04-gunkan.webp",
   "assets/img/gallery/05-panko-dip.webp",
   "assets/img/gallery/06-platter-chopsticks.webp",
   "assets/img/gallery/07-calamari-avocado.webp",
   "assets/img/gallery/08-tower.webp",
   "assets/img/gallery/09-roll-dip.webp",
-  "assets/img/gallery/10-salmon.webp",
   "assets/img/gallery/11-dessert-drizzle.webp",
   "assets/img/gallery/12-dessert-tower.webp",
   "assets/img/gallery/13-roll-chopsticks.webp",
