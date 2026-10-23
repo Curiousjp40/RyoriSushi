@@ -1,9 +1,10 @@
 /* ============================================================
    RYORI SUSHI · ZION HOUSE  —  edit this file to update the site
    ------------------------------------------------------------
-   1. CONFIG: phone, address, hours, social links
-   2. COMBOS: the boats / combo deals
-   3. MENU:   every section and dish (es + en)
+   1. CONFIG:  phone, address, hours, social links
+   2. GALLERY: photo filenames, in display order
+   3. COMBOS:  the boats / combo deals
+   4. MENU:    every section and dish (es + en)
    Prices are COP numbers, the site formats them as $23.000
    spicy: true adds the chili icon
    ============================================================ */
@@ -34,6 +35,20 @@ const CONFIG = {
   facebook: "https://www.facebook.com/profile.php?id=61583867097496",
   tiktok: "https://www.tiktok.com/@ryori.sushi8"
 };
+
+// Gallery photos, in the order they're shown — add/remove/reorder here
+const GALLERY = [
+  "assets/img/gallery/01-platter-smoke.webp",
+  "assets/img/gallery/02-rolls-duo.webp",
+  "assets/img/gallery/03-smoked-roll.webp",
+  "assets/img/gallery/04-gunkan.webp",
+  "assets/img/gallery/05-panko-dip.webp",
+  "assets/img/gallery/06-platter-chopsticks.webp",
+  "assets/img/gallery/07-calamari-avocado.webp",
+  "assets/img/gallery/08-tower.webp",
+  "assets/img/gallery/09-roll-dip.webp",
+  "assets/img/gallery/10-salmon.webp"
+];
 
 const COMBOS = [
   {

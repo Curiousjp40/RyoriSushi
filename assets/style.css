@@ -80,6 +80,22 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:.06em}
 .add.pop{transform:scale(1.08);background:var(--red);color:#fff}
 .combo .add{margin-top:.8rem}
 
+/* gallery */
+.gallery{padding:clamp(64px,10vw,120px) clamp(16px,6vw,96px)}
+.gallery-head{text-align:center;margin-bottom:2rem}
+.gallery-head h2{font-size:clamp(2.4rem,5vw,3.6rem)}
+.gallery-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.gallery-grid img{width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:4px;cursor:pointer}
+@media(max-width:640px){
+  .gallery-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-inline:-16px;padding-inline:16px;scrollbar-width:none}
+  .gallery-grid img{flex:0 0 70vw;scroll-snap-align:start}
+}
+
+/* lightbox */
+.lightbox{position:fixed;inset:0;z-index:50;background:#000d;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:.2s}
+.lightbox img{max-width:100%;max-height:100%;object-fit:contain;border-radius:4px;cursor:pointer}
+.lightbox-open .lightbox{opacity:1;pointer-events:auto}
+
 /* visit */
 .visit{display:grid;grid-template-columns:1fr 1fr;min-height:520px;background:var(--ink2)}
 .visit-card{padding:clamp(48px,8vw,96px) clamp(16px,6vw,96px)}

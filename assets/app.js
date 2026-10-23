@@ -1,9 +1,9 @@
 (() => {
   const T = {
-    es: { nav_menu: "Menú", nav_combos: "Barcos", nav_visit: "Visítanos", tagline: "Sabor · Tradición · Pasión",
+    es: { nav_menu: "Menú", nav_combos: "Barcos", nav_gallery: "Galería", nav_visit: "Visítanos", tagline: "Sabor · Tradición · Pasión",
       order: "Pedir por WhatsApp", see_menu: "Ver menú", combos_eyebrow: "Promociones y combos", combos_title: "Nuestros barcos",
       combos_lede: "Una experiencia para compartir que combina sabor, frescura y arte.", menu_title: "Menú", spicy: "Picante",
-      cop: "Precios en pesos colombianos (COP)", visit_eyebrow: "Gracias por elegirnos", visit_title: "Visítanos",
+      cop: "Precios en pesos colombianos (COP)", gallery_title: "Galería", visit_eyebrow: "Gracias por elegirnos", visit_title: "Visítanos",
       address: "Dirección", hours: "Horario", contact: "Pedidos", follow: "Síguenos",
       add: "Agregar", cart: "Tu pedido", empty: "Tu pedido está vacío. Agrega platos del menú.", total: "Total",
       name: "Nombre", phone: "Teléfono", mode: "Entrega", delivery: "Domicilio", pickup: "Recoger en el local",
@@ -11,10 +11,10 @@
       pay: "Pago", cash: "Efectivo", transfer: "Transferencia / Nequi", card: "Tarjeta (datáfono)",
       send: "Enviar pedido por WhatsApp", rappi: "Pedir en Rappi", rappi_link: "Ver en Rappi", directions: "Cómo llegar", call: "Llamar", view: "Ver pedido", need: "Escribe tu nombre", needAddr: "Escribe la dirección de entrega",
       delNote: "Domicilio propio del restaurante. El costo se confirma por WhatsApp.", tripadvisor: "Califícanos en TripAdvisor", msgHead: "Hola Ryori Sushi! Quiero hacer este pedido:" },
-    en: { nav_menu: "Menu", nav_combos: "Boats", nav_visit: "Visit", tagline: "Flavor · Tradition · Passion",
+    en: { nav_menu: "Menu", nav_combos: "Boats", nav_gallery: "Gallery", nav_visit: "Visit", tagline: "Flavor · Tradition · Passion",
       order: "Order on WhatsApp", see_menu: "See menu", combos_eyebrow: "Promotions & combos", combos_title: "Our boats",
       combos_lede: "A shared experience combining flavor, freshness, and artistry.", menu_title: "Menu", spicy: "Spicy",
-      cop: "Prices in Colombian pesos (COP)", visit_eyebrow: "Thank you for choosing us", visit_title: "Visit us",
+      cop: "Prices in Colombian pesos (COP)", gallery_title: "Gallery", visit_eyebrow: "Thank you for choosing us", visit_title: "Visit us",
       address: "Address", hours: "Hours", contact: "Orders", follow: "Follow us",
       add: "Add", cart: "Your order", empty: "Your order is empty. Add dishes from the menu.", total: "Total",
       name: "Name", phone: "Phone", mode: "Order type", delivery: "Delivery", pickup: "Pickup",
@@ -98,6 +98,13 @@
       </div>`;
   }
 
+  // ---------- gallery ----------
+  function renderGallery() {
+    $("#galleryGrid").innerHTML = GALLERY.map(src => `<img src="${src}" alt="" loading="lazy" data-gallery>`).join("");
+  }
+  const openLightbox = src => { $("#lightboxImg").src = src; document.body.classList.add("lightbox-open"); };
+  const closeLightbox = () => document.body.classList.remove("lightbox-open");
+
   // ---------- cart ----------
   const drawer = document.createElement("aside");
   drawer.className = "drawer"; drawer.id = "drawer";
@@ -167,10 +174,12 @@
     const i = e.target.closest("[data-inc]"); if (i) return change(i.dataset.inc, 1);
     const d = e.target.closest("[data-dec]"); if (d) return change(d.dataset.dec, -1);
     const tb = e.target.closest("[data-tab]"); if (tb) { activeTab = tb.dataset.tab; renderTabs(); renderMenu(); return; }
+    const g = e.target.closest("[data-gallery]"); if (g) return openLightbox(g.src);
+    if (e.target.closest("#lightbox")) return closeLightbox();
     if (e.target.closest("#cartbar")) return open();
     if (e.target.closest("[data-close]") || e.target === shade) return close();
   });
-  document.addEventListener("keydown", e => { if (e.key === "Escape") close(); });
+  document.addEventListener("keydown", e => { if (e.key === "Escape") { close(); closeLightbox(); } });
 
   drawer.addEventListener("input", e => {
     const f = e.target.form; if (!f) return;
@@ -209,7 +218,7 @@
     $("#yr").textContent = new Date().getFullYear();
   }
 
-  function renderAll() { renderStatic(); renderCombos(); renderTabs(); renderMenu(); renderCart(); }
+  function renderAll() { renderStatic(); renderCombos(); renderTabs(); renderMenu(); renderGallery(); renderCart(); }
   $("#langBtn").addEventListener("click", () => { lang = lang === "es" ? "en" : "es"; store.set("ryori_lang_v2", lang); renderAll(); });
   renderAll();
 })();
