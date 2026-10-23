@@ -13,8 +13,9 @@ Static site (plain HTML/CSS/JS, no build step) for Ryori Sushi Zion House, a sus
 Customers build a cart, fill name / phone / delivery or pickup / address / payment / notes, and the site opens `wa.me/<CONFIG.whatsapp>` with the full order typed out. No backend. Cart and form are saved in localStorage.
 
 ## Before going live (TODO)
-- [ ] Real WhatsApp number in `CONFIG.whatsapp` (digits only, starts with 57)
-- [ ] Real address, hours, Google Maps embed URL
+- [x] WhatsApp number (+57 314 7196115, from Google Maps listing; confirm it takes WhatsApp)
+- [x] Address + map (Cra. 86 #45B-16, La América)
+- [ ] Confirm full hours (Google only shows "closes 10:30 PM")
 - [ ] Confirm Facebook/TikTok URLs (assumed `ryorisushi.co` handle everywhere)
 - [ ] Owner confirms prices and the Spanish text for Pastas/Postres (translated from the English menu)
 

@@ -10,18 +10,16 @@
 
 const CONFIG = {
   // WhatsApp number in international format, digits only (57 = Colombia)
-  // TODO: replace with the real number
-  whatsapp: "573000000000",
+  whatsapp: "573147196115",
   whatsappMessage: {
     es: "Hola Ryori Sushi! Quiero hacer un pedido.",
     en: "Hi Ryori Sushi! I'd like to place an order."
   },
-  // TODO: real address + neighborhood
-  address: { es: "Dirección por confirmar · Medellín, Colombia", en: "Address coming soon · Medellín, Colombia" },
-  // TODO: real hours
-  hours: { es: "Lunes a domingo · horario por confirmar", en: "Monday to Sunday · hours coming soon" },
+  address: { es: "Cra. 86 #45B-16, La América, Medellín, Antioquia", en: "Cra. 86 #45B-16, La América, Medellín, Antioquia" },
+  // TODO: confirm full schedule (Google shows closing at 10:30 PM)
+  hours: { es: "Todos los días · hasta las 10:30 PM", en: "Every day · until 10:30 PM" },
   // Google Maps embed URL (Maps > Share > Embed a map > copy the src). Leave "" to hide.
-  mapEmbed: "",
+  mapEmbed: "https://maps.google.com/maps?q=Ryori%20Sushi%20Zion%20House%2C%20Cra.%2086%20%2345b-16%2C%20Medell%C3%ADn&z=16&output=embed",
   handle: "@ryorisushi.co",
   instagram: "https://www.instagram.com/ryorisushi.co",
   facebook: "https://www.facebook.com/ryorisushi.co",
