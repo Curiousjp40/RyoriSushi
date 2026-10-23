@@ -15,9 +15,10 @@
 const CONFIG = {
   // WhatsApp number in international format, digits only (57 = Colombia)
   whatsapp: "573147196115",
+  // The cart handles orders now — this is only for the "questions" WhatsApp links
   whatsappMessage: {
-    es: "Hola Ryori Sushi! Quiero hacer un pedido.",
-    en: "Hi Ryori Sushi! I'd like to place an order."
+    es: "Hola Ryori Sushi! Tengo una pregunta.",
+    en: "Hi Ryori Sushi! I have a question."
   },
   address: { es: "Cra. 86 #45B-16, La América, Medellín, Antioquia", en: "Cra. 86 #45B-16, La América, Medellín, Antioquia" },
   hours: {
@@ -37,7 +38,13 @@ const CONFIG = {
   googleReviewUrl: "https://search.google.com/local/writereview?placeid=ChIJU5zQT28pRI4RQEGHsRRapmA",
   instagram: "https://www.instagram.com/ryorisushi.co",
   facebook: "https://www.facebook.com/profile.php?id=61583867097496",
-  tiktok: "https://www.tiktok.com/@ryori.sushi8"
+  tiktok: "https://www.tiktok.com/@ryori.sushi8",
+  // Chef / owner card in the Visit section. Leave name "" to show the role in its place.
+  chef: {
+    name: "",
+    role: { es: "Chef y fundador", en: "Chef & founder" },
+    bio: { es: "Cocina asiática convertida en algo diferente.", en: "Asian cooking turned into something different." }
+  }
 };
 
 // Gallery photos, in the order they're shown — add/remove/reorder here

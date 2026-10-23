@@ -1,12 +1,13 @@
 (() => {
   const T = {
     es: { nav_menu: "Menú", nav_combos: "Barcos", nav_gallery: "Galería", nav_reviews: "Reseñas", nav_visit: "Visítanos", tagline: "Sabor · Tradición · Pasión",
-      order: "Pedir por WhatsApp", see_menu: "Ver menú", combos_eyebrow: "Promociones y combos", combos_title: "Nuestros barcos",
+      order_now: "Hacer pedido", menu_note: "Arma tu pedido aquí y envíalo por WhatsApp al finalizar", combos_eyebrow: "Promociones y combos", combos_title: "Nuestros barcos",
       combos_lede: "Una experiencia para compartir que combina sabor, frescura y arte.", menu_title: "Menú", spicy: "Picante",
       cop: "Precios en pesos colombianos (COP)", gallery_title: "Galería", reviews_title: "Reseñas", reviews_count: "reseñas",
       see_more: "Ver más", see_less: "Ver menos", write_review: "Déjanos tu reseña en Google", reviews_by_google: "Reseñas de Google",
       visit_eyebrow: "Gracias por elegirnos", visit_title: "Visítanos",
-      address: "Dirección", hours: "Horario", contact: "Pedidos", follow: "Síguenos",
+      address: "Dirección", hours: "Horario", contact: "WhatsApp", follow: "Síguenos",
+      wa_questions: "¿Preguntas?", wa_aria: "¿Preguntas? Escríbenos por WhatsApp",
       add: "Agregar", cart: "Tu pedido", empty: "Tu pedido está vacío. Agrega platos del menú.", total: "Total",
       name: "Nombre", phone: "Teléfono", mode: "Entrega", delivery: "Domicilio", pickup: "Recoger en el local",
       addr: "Dirección de entrega", notes: "Notas (sabores de sushi para combos, sin picante, etc.)",
@@ -14,12 +15,13 @@
       send: "Enviar pedido por WhatsApp", directions: "Cómo llegar", call: "Llamar", view: "Ver pedido", need: "Escribe tu nombre", needAddr: "Escribe la dirección de entrega",
       delNote: "Domicilio propio del restaurante. El costo se confirma por WhatsApp.", tripadvisor: "Califícanos en TripAdvisor", msgHead: "Hola Ryori Sushi! Quiero hacer este pedido:" },
     en: { nav_menu: "Menu", nav_combos: "Boats", nav_gallery: "Gallery", nav_reviews: "Reviews", nav_visit: "Visit", tagline: "Flavor · Tradition · Passion",
-      order: "Order on WhatsApp", see_menu: "See menu", combos_eyebrow: "Promotions & combos", combos_title: "Our boats",
+      order_now: "Order now", menu_note: "Build your order here and send it on WhatsApp at checkout.", combos_eyebrow: "Promotions & combos", combos_title: "Our boats",
       combos_lede: "A shared experience combining flavor, freshness, and artistry.", menu_title: "Menu", spicy: "Spicy",
       cop: "Prices in Colombian pesos (COP)", gallery_title: "Gallery", reviews_title: "Reviews", reviews_count: "reviews",
       see_more: "See more", see_less: "See less", write_review: "Leave us a review on Google", reviews_by_google: "Reviews by Google",
       visit_eyebrow: "Thank you for choosing us", visit_title: "Visit us",
-      address: "Address", hours: "Hours", contact: "Orders", follow: "Follow us",
+      address: "Address", hours: "Hours", contact: "WhatsApp", follow: "Follow us",
+      wa_questions: "Questions?", wa_aria: "Questions? Message us on WhatsApp",
       add: "Add", cart: "Your order", empty: "Your order is empty. Add dishes from the menu.", total: "Total",
       name: "Name", phone: "Phone", mode: "Order type", delivery: "Delivery", pickup: "Pickup",
       addr: "Delivery address", notes: "Notes (sushi choices for combos, no spicy, etc.)",
@@ -149,6 +151,17 @@
     });
   }
 
+  // ---------- chef card ----------
+  function renderChef() {
+    const chef = CONFIG.chef, role = chef.role[lang];
+    const alt = (chef.name ? chef.name + " – " : "") + role;
+    $("#chefCard").innerHTML = `
+      <img class="chef-photo" src="assets/img/chef.webp" alt="${alt}" loading="lazy">
+      <h3 class="chef-name">${chef.name || role}</h3>
+      ${chef.name ? `<p class="chef-role">${role}</p>` : ""}
+      <p class="chef-bio">${chef.bio[lang]}</p>`;
+  }
+
   // ---------- cart ----------
   const drawer = document.createElement("aside");
   drawer.className = "drawer"; drawer.id = "drawer";
@@ -225,6 +238,7 @@
       rm.textContent = expanded ? T[lang].see_less : T[lang].see_more;
       return;
     }
+    const on = e.target.closest("[data-order-now]"); if (on) return totals().n > 0 ? open() : $("#menu").scrollIntoView({ behavior: "smooth" });
     if (e.target.closest("#cartbar")) return open();
     if (e.target.closest("[data-close]") || e.target === shade) return close();
   });
@@ -251,6 +265,7 @@
     $("#langBtn").textContent = lang === "es" ? "EN" : "ES";
     const wa = waLink(CONFIG.whatsappMessage[lang]);
     document.querySelectorAll("[data-wa]").forEach(el => { el.href = wa.href; el.target = wa.target; });
+    $("#waFloat").setAttribute("aria-label", T[lang].wa_aria);
     $("#tripadvisorBtn").href = CONFIG.tripadvisor;
     $("#tripadvisorBtn").hidden = !CONFIG.tripadvisor;
     $("#directionsBtn").href = isIOS
@@ -265,7 +280,7 @@
     $("#yr").textContent = new Date().getFullYear();
   }
 
-  function renderAll() { renderStatic(); renderCombos(); renderTabs(); renderMenu(); renderGallery(); renderReviews(); renderCart(); }
+  function renderAll() { renderStatic(); renderChef(); renderCombos(); renderTabs(); renderMenu(); renderGallery(); renderReviews(); renderCart(); }
   $("#langBtn").addEventListener("click", () => { lang = lang === "es" ? "en" : "es"; store.set("ryori_lang_v2", lang); renderAll(); });
   renderAll();
 
