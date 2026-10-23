@@ -29,8 +29,10 @@ const CONFIG = {
   mapEmbed: "https://maps.google.com/maps?q=6.2549258,-75.6031431&z=17&output=embed",
   // Rappi store page (leave "" to hide the Rappi buttons)
   rappi: "https://www.rappi.com.co/restaurantes/900469975-ryori-sushi-zion-house",
-  // TripAdvisor profile (leave "" to hide the review button) — TODO: paste the real link
-  tripadvisor: "",
+  // TripAdvisor "write a review" link (leave "" to hide the review button)
+  tripadvisor: "https://www.tripadvisor.com/UserReviewEdit-g297478-d34664505",
+  // TripAdvisor reviews page — not linked anywhere yet, for a future "see reviews" button
+  tripadvisorPage: "https://www.tripadvisor.com/Restaurant_Review-g297478-d34664505-Reviews-Ryori_Sushi_Zion_House-Medellin_Antioquia_Department.html",
   instagram: "https://www.instagram.com/ryorisushi.co",
   facebook: "https://www.facebook.com/profile.php?id=61583867097496",
   tiktok: "https://www.tiktok.com/@ryori.sushi8"
