@@ -160,17 +160,6 @@
     });
   }
 
-  // ---------- chef card ----------
-  function renderChef() {
-    const chef = CONFIG.chef, role = chef.role[lang];
-    const alt = (chef.name ? chef.name + " – " : "") + role;
-    $("#chefCard").innerHTML = `
-      <img class="chef-photo" src="assets/img/chef.webp" alt="${alt}" loading="lazy">
-      <h3 class="chef-name">${chef.name || role}</h3>
-      ${chef.name ? `<p class="chef-role">${role}</p>` : ""}
-      <p class="chef-bio">${chef.bio[lang]}</p>`;
-  }
-
   // ---------- cart ----------
   const drawer = document.createElement("aside");
   drawer.className = "drawer"; drawer.id = "drawer";
@@ -290,7 +279,7 @@
     $("#yr").textContent = new Date().getFullYear();
   }
 
-  function renderAll() { renderStatic(); renderChef(); renderPromos(); renderCombos(); renderTabs(); renderMenu(); renderGallery(); renderReviews(); renderCart(); }
+  function renderAll() { renderStatic(); renderPromos(); renderCombos(); renderTabs(); renderMenu(); renderGallery(); renderReviews(); renderCart(); }
   $("#langBtn").addEventListener("click", () => { lang = lang === "es" ? "en" : "es"; store.set("ryori_lang_v2", lang); renderAll(); });
   renderAll();
 

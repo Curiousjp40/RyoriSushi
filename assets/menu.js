@@ -40,13 +40,7 @@ const CONFIG = {
   googleReviewUrl: "https://search.google.com/local/writereview?placeid=ChIJU5zQT28pRI4RQEGHsRRapmA",
   instagram: "https://www.instagram.com/ryorisushi.co",
   facebook: "https://www.facebook.com/profile.php?id=61583867097496",
-  tiktok: "https://www.tiktok.com/@ryori.sushi8",
-  // Chef / owner card in the Visit section. Leave name "" to show the role in its place.
-  chef: {
-    name: "",
-    role: { es: "Chef y fundador", en: "Chef & founder" },
-    bio: { es: "Cocina asiática convertida en algo diferente.", en: "Asian cooking turned into something different." }
-  }
+  tiktok: "https://www.tiktok.com/@ryori.sushi8"
 };
 
 // Gallery photos, in the order they're shown — add/remove/reorder here

@@ -136,12 +136,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:.06em}
 .reviews-attribution{text-align:center;color:var(--muted);font-size:.72rem;margin-top:1.8rem;letter-spacing:.05em}
 
 /* visit */
-.visit{display:grid;grid-template-columns:1fr 1.3fr 1fr;min-height:520px;background:var(--ink2)}
-.chef-card{padding:clamp(48px,8vw,96px) clamp(16px,4vw,48px);text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;border-right:1px solid var(--line)}
-.chef-photo{width:100%;max-width:320px;aspect-ratio:9/16;object-fit:cover;border:1px solid var(--gold);border-radius:4px}
-.chef-name{color:var(--gold);font-size:1.4rem;margin-top:1.2rem}
-.chef-role{color:var(--red);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;margin-top:.4rem}
-.chef-bio{color:var(--muted);font-size:.85rem;margin-top:.7rem;max-width:280px}
+.visit{display:grid;grid-template-columns:1fr 1fr;min-height:520px;background:var(--ink2)}
 .visit-card{padding:clamp(48px,8vw,96px) clamp(16px,6vw,96px)}
 .visit h2{font-size:clamp(2rem,4vw,3rem);color:var(--gold);margin-bottom:1.8rem}
 dl{display:grid;grid-template-columns:auto 1fr;gap:.8rem 1.6rem}
@@ -157,7 +152,7 @@ dd a{border-bottom:1px solid var(--gold)}
 .map{min-height:360px;overflow:hidden}
 .map img{width:100%;height:100%;object-fit:cover;object-position:top}
 .map iframe{width:100%;height:100%;min-height:360px;border:0;filter:grayscale(.4) invert(.9) hue-rotate(180deg)}
-@media(max-width:860px){.visit{grid-template-columns:1fr}.chef-card{border-right:0;border-bottom:1px solid var(--line)}.map{max-height:420px}}
+@media(max-width:860px){.visit{grid-template-columns:1fr}.map{max-height:420px}}
 
 footer{text-align:center;padding:2rem;color:var(--muted);font-size:.75rem;letter-spacing:.15em}
 
