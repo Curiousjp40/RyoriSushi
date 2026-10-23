@@ -27,7 +27,9 @@ jobs:
             "https://places.googleapis.com/v1/places/ChIJU5zQT28pRI4RQEGHsRRapmA?languageCode=es")
 
           if [ "$http_code" != "200" ]; then
-            echo "::error::Places API request failed with HTTP $http_code"
+            err_message=$(jq -r '.error.message // "unknown"' /tmp/new-reviews.json 2>/dev/null || echo "unknown")
+            err_status=$(jq -r '.error.status // "unknown"' /tmp/new-reviews.json 2>/dev/null || echo "unknown")
+            echo "::error::Places API request failed with HTTP $http_code ($err_status): $err_message"
             exit 1
           fi
 
