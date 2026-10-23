@@ -19,7 +19,7 @@ const CONFIG = {
   // TODO: confirm full schedule (Google shows closing at 10:30 PM)
   hours: { es: "Todos los días · hasta las 10:30 PM", en: "Every day · until 10:30 PM" },
   // Google Maps embed URL (Maps > Share > Embed a map > copy the src). Leave "" to hide.
-  mapEmbed: "https://maps.google.com/maps?q=Ryori%20Sushi%20Zion%20House%2C%20Cra.%2086%20%2345b-16%2C%20Medell%C3%ADn&z=16&output=embed",
+  mapEmbed: "https://maps.google.com/maps?q=6.2549258,-75.6031431&z=17&output=embed",
   handle: "@ryorisushi.co",
   instagram: "https://www.instagram.com/ryorisushi.co",
   facebook: "https://www.facebook.com/ryorisushi.co",
