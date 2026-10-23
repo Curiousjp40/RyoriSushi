@@ -10,7 +10,8 @@
 
 const CONFIG = {
   // WhatsApp number in international format, digits only (57 = Colombia)
-  whatsapp: "573147196115",
+  // TEST NUMBER - restore 573147196115 before going live
+  whatsapp: "13174289633",
   whatsappMessage: {
     es: "Hola Ryori Sushi! Quiero hacer un pedido.",
     en: "Hi Ryori Sushi! I'd like to place an order."
