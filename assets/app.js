@@ -62,6 +62,11 @@
     const wa = waLink(text);
     if (wa.target === "_self") location.href = wa.href; else window.open(wa.href, "_blank", "noopener");
   }
+  function formatPhone(digits) {
+    if (/^57\d{10}$/.test(digits)) return "+57 " + digits.slice(2).replace(/(\d{3})(\d{3})(\d{4})/, "$1 $2 $3");
+    if (/^1\d{10}$/.test(digits)) return "+1 " + digits.slice(1).replace(/(\d{3})(\d{3})(\d{4})/, "$1 $2 $3");
+    return "+" + digits;
+  }
 
   // index every orderable item by key
   const ITEMS = {};
@@ -254,7 +259,7 @@
       ? `https://maps.apple.com/?daddr=${CONFIG.lat},${CONFIG.lng}`
       : `https://www.google.com/maps/dir/?api=1&destination=${CONFIG.lat},${CONFIG.lng}`;
     $("#callBtn").href = "tel:+" + CONFIG.whatsapp;
-    $("#waText").textContent = "+" + CONFIG.whatsapp.replace(/^(\d{2})(\d{3})(\d{3})(\d+)$/, "$1 $2 $3 $4");
+    $("#waText").textContent = formatPhone(CONFIG.whatsapp);
     $("#addr").textContent = CONFIG.address[lang];
     $("#hrs").textContent = CONFIG.hours[lang];
     $("#ig").href = CONFIG.instagram; $("#fb").href = CONFIG.facebook; $("#tt").href = CONFIG.tiktok;
