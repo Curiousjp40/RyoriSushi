@@ -7,6 +7,9 @@
    4. MENU:    every section and dish (es + en)
    Prices are COP numbers, the site formats them as $23.000
    spicy: true adds the chili icon
+
+   Google reviews are NOT edited here — data/reviews.json is written
+   daily by .github/workflows/google-reviews.yml and loaded at runtime.
    ============================================================ */
 
 const CONFIG = {
@@ -33,6 +36,8 @@ const CONFIG = {
   tripadvisor: "https://www.tripadvisor.com/UserReviewEdit-g297478-d34664505",
   // TripAdvisor reviews page — not linked anywhere yet, for a future "see reviews" button
   tripadvisorPage: "https://www.tripadvisor.com/Restaurant_Review-g297478-d34664505-Reviews-Ryori_Sushi_Zion_House-Medellin_Antioquia_Department.html",
+  // Google "write a review" link — placeid must match .github/workflows/google-reviews.yml
+  googleReviewUrl: "https://search.google.com/local/writereview?placeid=ChIJU5zQT28pRI4RQEGHsRRapmA",
   instagram: "https://www.instagram.com/ryorisushi.co",
   facebook: "https://www.facebook.com/profile.php?id=61583867097496",
   tiktok: "https://www.tiktok.com/@ryori.sushi8"

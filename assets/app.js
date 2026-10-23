@@ -1,9 +1,11 @@
 (() => {
   const T = {
-    es: { nav_menu: "Menú", nav_combos: "Barcos", nav_gallery: "Galería", nav_visit: "Visítanos", tagline: "Sabor · Tradición · Pasión",
+    es: { nav_menu: "Menú", nav_combos: "Barcos", nav_gallery: "Galería", nav_reviews: "Reseñas", nav_visit: "Visítanos", tagline: "Sabor · Tradición · Pasión",
       order: "Pedir por WhatsApp", see_menu: "Ver menú", combos_eyebrow: "Promociones y combos", combos_title: "Nuestros barcos",
       combos_lede: "Una experiencia para compartir que combina sabor, frescura y arte.", menu_title: "Menú", spicy: "Picante",
-      cop: "Precios en pesos colombianos (COP)", gallery_title: "Galería", visit_eyebrow: "Gracias por elegirnos", visit_title: "Visítanos",
+      cop: "Precios en pesos colombianos (COP)", gallery_title: "Galería", reviews_title: "Reseñas", reviews_count: "reseñas",
+      see_more: "Ver más", see_less: "Ver menos", write_review: "Déjanos tu reseña en Google", reviews_by_google: "Reseñas de Google",
+      visit_eyebrow: "Gracias por elegirnos", visit_title: "Visítanos",
       address: "Dirección", hours: "Horario", contact: "Pedidos", follow: "Síguenos",
       add: "Agregar", cart: "Tu pedido", empty: "Tu pedido está vacío. Agrega platos del menú.", total: "Total",
       name: "Nombre", phone: "Teléfono", mode: "Entrega", delivery: "Domicilio", pickup: "Recoger en el local",
@@ -11,10 +13,12 @@
       pay: "Pago", cash: "Efectivo", transfer: "Transferencia / Nequi", card: "Tarjeta (datáfono)",
       send: "Enviar pedido por WhatsApp", rappi: "Pedir en Rappi", rappi_link: "Ver en Rappi", directions: "Cómo llegar", call: "Llamar", view: "Ver pedido", need: "Escribe tu nombre", needAddr: "Escribe la dirección de entrega",
       delNote: "Domicilio propio del restaurante. El costo se confirma por WhatsApp.", tripadvisor: "Califícanos en TripAdvisor", msgHead: "Hola Ryori Sushi! Quiero hacer este pedido:" },
-    en: { nav_menu: "Menu", nav_combos: "Boats", nav_gallery: "Gallery", nav_visit: "Visit", tagline: "Flavor · Tradition · Passion",
+    en: { nav_menu: "Menu", nav_combos: "Boats", nav_gallery: "Gallery", nav_reviews: "Reviews", nav_visit: "Visit", tagline: "Flavor · Tradition · Passion",
       order: "Order on WhatsApp", see_menu: "See menu", combos_eyebrow: "Promotions & combos", combos_title: "Our boats",
       combos_lede: "A shared experience combining flavor, freshness, and artistry.", menu_title: "Menu", spicy: "Spicy",
-      cop: "Prices in Colombian pesos (COP)", gallery_title: "Gallery", visit_eyebrow: "Thank you for choosing us", visit_title: "Visit us",
+      cop: "Prices in Colombian pesos (COP)", gallery_title: "Gallery", reviews_title: "Reviews", reviews_count: "reviews",
+      see_more: "See more", see_less: "See less", write_review: "Leave us a review on Google", reviews_by_google: "Reviews by Google",
+      visit_eyebrow: "Thank you for choosing us", visit_title: "Visit us",
       address: "Address", hours: "Hours", contact: "Orders", follow: "Follow us",
       add: "Add", cart: "Your order", empty: "Your order is empty. Add dishes from the menu.", total: "Total",
       name: "Name", phone: "Phone", mode: "Order type", delivery: "Delivery", pickup: "Pickup",
@@ -31,6 +35,7 @@
 
   let lang = store.get("ryori_lang_v2", "es"); // always Spanish unless the visitor tapped EN
   let cart = store.get("ryori_cart", {}); // key -> qty
+  let REVIEWS = null; // loaded async from data/reviews.json
   let activeTab = MENU[0].id;
   const fmt = n => "$" + n.toLocaleString("es-CO");
   const $ = s => document.querySelector(s);
@@ -105,6 +110,40 @@
   const openLightbox = src => { $("#lightboxImg").src = src; document.body.classList.add("lightbox-open"); };
   const closeLightbox = () => document.body.classList.remove("lightbox-open");
 
+  // ---------- reviews ----------
+  const stars = n => "★".repeat(Math.round(n)) + "☆".repeat(5 - Math.round(n));
+
+  function renderReviews() {
+    const sec = $("#reviews");
+    const list = REVIEWS && REVIEWS.reviews;
+    if (!list || !list.length) { sec.hidden = true; return; }
+    sec.hidden = false;
+    const t = T[lang];
+    $("#reviewsRatingLink").href = REVIEWS.googleMapsUri || "#";
+    $("#reviewsStars").textContent = stars(REVIEWS.rating || 0);
+    $("#reviewsRatingText").textContent = `${(REVIEWS.rating || 0).toFixed(1)} · ${REVIEWS.userRatingCount || 0} ${t.reviews_count}`;
+    $("#writeReviewBtn").href = CONFIG.googleReviewUrl;
+    $("#reviewsGrid").innerHTML = list.slice(0, 5).map(r => {
+      const author = r.authorAttribution || {};
+      return `
+      <article class="review-card">
+        <div class="review-top">
+          <img class="review-avatar" src="${esc(author.photoUri || "")}" alt="" loading="lazy">
+          <div>
+            <a class="review-author" href="${esc(author.uri || "#")}" target="_blank" rel="noopener">${esc(author.displayName || "")}</a>
+            <div class="review-meta"><span class="stars">${stars(r.rating || 0)}</span> <span class="review-time">${esc(r.relativePublishTimeDescription || "")}</span></div>
+          </div>
+        </div>
+        <p class="review-text">${esc((r.text && r.text.text) || "")}</p>
+        <button class="review-more" hidden>${t.see_more}</button>
+      </article>`;
+    }).join("");
+    $("#reviewsGrid").querySelectorAll(".review-card").forEach(card => {
+      const p = card.querySelector(".review-text");
+      if (p.scrollHeight > p.clientHeight + 1) card.querySelector(".review-more").hidden = false;
+    });
+  }
+
   // ---------- cart ----------
   const drawer = document.createElement("aside");
   drawer.className = "drawer"; drawer.id = "drawer";
@@ -176,6 +215,11 @@
     const tb = e.target.closest("[data-tab]"); if (tb) { activeTab = tb.dataset.tab; renderTabs(); renderMenu(); return; }
     const g = e.target.closest("[data-gallery]"); if (g) return openLightbox(g.src);
     if (e.target.closest("#lightbox")) return closeLightbox();
+    const rm = e.target.closest(".review-more"); if (rm) {
+      const expanded = rm.closest(".review-card").classList.toggle("expanded");
+      rm.textContent = expanded ? T[lang].see_less : T[lang].see_more;
+      return;
+    }
     if (e.target.closest("#cartbar")) return open();
     if (e.target.closest("[data-close]") || e.target === shade) return close();
   });
@@ -218,7 +262,9 @@
     $("#yr").textContent = new Date().getFullYear();
   }
 
-  function renderAll() { renderStatic(); renderCombos(); renderTabs(); renderMenu(); renderGallery(); renderCart(); }
+  function renderAll() { renderStatic(); renderCombos(); renderTabs(); renderMenu(); renderGallery(); renderReviews(); renderCart(); }
   $("#langBtn").addEventListener("click", () => { lang = lang === "es" ? "en" : "es"; store.set("ryori_lang_v2", lang); renderAll(); });
   renderAll();
+
+  fetch("data/reviews.json").then(r => r.ok ? r.json() : null).catch(() => null).then(data => { REVIEWS = data; renderReviews(); });
 })();

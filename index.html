@@ -25,6 +25,7 @@
     <a href="#menu" data-i18n="nav_menu">Menú</a>
     <a href="#combos" data-i18n="nav_combos">Barcos</a>
     <a href="#gallery" data-i18n="nav_gallery">Galería</a>
+    <a href="#reviews" data-i18n="nav_reviews">Reseñas</a>
     <a href="#visit" data-i18n="nav_visit">Visítanos</a>
   </nav>
   <button class="lang" id="langBtn" aria-label="Change language">EN</button>
@@ -73,6 +74,21 @@
 </section>
 
 <div class="lightbox" id="lightbox"><img id="lightboxImg" src="" alt=""></div>
+
+<section class="reviews" id="reviews" hidden>
+  <div class="reviews-head">
+    <h2 data-i18n="reviews_title">Reseñas</h2>
+    <a class="reviews-rating" id="reviewsRatingLink" target="_blank" rel="noopener">
+      <span class="stars" id="reviewsStars"></span>
+      <span id="reviewsRatingText"></span>
+    </a>
+  </div>
+  <div class="reviews-grid" id="reviewsGrid"></div>
+  <div class="reviews-actions">
+    <a class="btn ghost" id="writeReviewBtn" href="#" target="_blank" rel="noopener" data-i18n="write_review">Déjanos tu reseña en Google</a>
+  </div>
+  <p class="reviews-attribution" data-i18n="reviews_by_google">Reseñas de Google</p>
+</section>
 
 <section class="visit" id="visit">
   <div class="visit-card">

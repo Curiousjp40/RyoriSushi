@@ -1,0 +1,65 @@
+name: Update Google Reviews
+
+on:
+  schedule:
+    - cron: "0 11 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-reviews:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fetch reviews from Places API and commit if changed
+        env:
+          GOOGLE_PLACES_KEY: ${{ secrets.GOOGLE_PLACES_KEY }}
+        run: |
+          set -euo pipefail
+
+          http_code=$(curl -sS -o /tmp/new-reviews.json -w "%{http_code}" \
+            -H "X-Goog-Api-Key: $GOOGLE_PLACES_KEY" \
+            -H "X-Goog-FieldMask: rating,userRatingCount,reviews,googleMapsUri" \
+            "https://places.googleapis.com/v1/places/ChIJU5zQT28pRI4RQEGHsRRapmA?languageCode=es")
+
+          if [ "$http_code" != "200" ]; then
+            echo "::error::Places API request failed with HTTP $http_code"
+            exit 1
+          fi
+
+          if ! jq empty /tmp/new-reviews.json 2>/dev/null; then
+            echo "::error::Places API response was not valid JSON"
+            exit 1
+          fi
+
+          if jq -e 'has("error")' /tmp/new-reviews.json >/dev/null 2>&1; then
+            echo "::error::Places API response contained an error"
+            cat /tmp/new-reviews.json
+            exit 1
+          fi
+
+          mkdir -p data
+          if [ -f data/reviews.json ]; then
+            jq -S 'del(.updatedAt)' data/reviews.json > /tmp/old-normalized.json
+          else
+            echo '{}' > /tmp/old-normalized.json
+          fi
+          jq -S 'del(.updatedAt)' /tmp/new-reviews.json > /tmp/new-normalized.json
+
+          if diff -q /tmp/old-normalized.json /tmp/new-normalized.json > /dev/null; then
+            echo "Review data unchanged, nothing to commit"
+            exit 0
+          fi
+
+          jq --arg updatedAt "$(date -u +%Y-%m-%dT%H:%M:%SZ)" '. + {updatedAt: $updatedAt}' /tmp/new-reviews.json > data/reviews.json
+          echo "Reviews updated: rating=$(jq -r '.rating' data/reviews.json), count=$(jq -r '.userRatingCount' data/reviews.json)"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/reviews.json
+          git commit -m "Update Google reviews [skip ci]"
+          git push

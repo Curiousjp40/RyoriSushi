@@ -96,6 +96,30 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:.06em}
 .lightbox img{max-width:100%;max-height:100%;object-fit:contain;border-radius:4px;cursor:pointer}
 .lightbox-open .lightbox{opacity:1;pointer-events:auto}
 
+/* reviews */
+.reviews{padding:clamp(64px,10vw,120px) clamp(16px,6vw,96px);background:var(--ink2)}
+.reviews-head{text-align:center}
+.reviews-head h2{font-size:clamp(2.4rem,5vw,3.6rem)}
+.reviews-rating{display:inline-flex;align-items:center;gap:.5rem;margin-top:.7rem;color:var(--gold);font-size:.85rem}
+.reviews-rating:hover{text-decoration:underline}
+.reviews .stars{color:var(--gold);letter-spacing:.1em}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:2.5rem 0}
+.review-card{background:var(--ink3);border:1px solid var(--line);padding:1.2rem;display:flex;flex-direction:column;gap:.7rem}
+.review-top{display:flex;align-items:center;gap:.7rem}
+.review-avatar{width:44px;height:44px;border-radius:50%;object-fit:cover;flex:none;background:var(--ink)}
+.review-author{font-size:.85rem;font-weight:500;border-bottom:1px solid transparent}
+.review-author:hover{border-color:var(--gold)}
+.review-meta{font-size:.75rem;color:var(--muted);display:flex;align-items:center;gap:.4rem;margin-top:.15rem}
+.review-text{font-size:.85rem;color:var(--muted);line-height:1.55;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:5;overflow:hidden}
+.review-card.expanded .review-text{-webkit-line-clamp:unset;overflow:visible}
+.review-more{align-self:flex-start;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:#f15a6c;border-bottom:1px solid currentColor}
+@media(max-width:640px){
+  .reviews-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:-16px;padding-inline:16px;scrollbar-width:none}
+  .review-card{flex:0 0 85vw;scroll-snap-align:start}
+}
+.reviews-actions{display:flex;justify-content:center;margin-top:.5rem}
+.reviews-attribution{text-align:center;color:var(--muted);font-size:.72rem;margin-top:1.8rem;letter-spacing:.05em}
+
 /* visit */
 .visit{display:grid;grid-template-columns:1fr 1fr;min-height:520px;background:var(--ink2)}
 .visit-card{padding:clamp(48px,8vw,96px) clamp(16px,6vw,96px)}
