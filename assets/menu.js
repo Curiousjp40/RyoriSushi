@@ -106,27 +106,27 @@ const MENU = [
     id: "entradas", title: { es: "Entradas", en: "Appetizers" }, img: "assets/img/gunkan.webp",
     groups: [
       { title: { es: "Gunkans", en: "Gunkan" }, items: [
-        { name: { es: "Gunkans de Pollo", en: "Chicken Gunkan" }, price: 13000,
+        { name: { es: "Gunkans de Pollo", en: "Chicken Gunkan" }, price: 14000,
           desc: { es: "Tres unidades de gunkans envueltos en maduro o nori, con pollo glaseado en salsa teriyaki.", en: "Three gunkan pieces wrapped in ripe plantain or nori, with chicken glazed in teriyaki sauce." } },
-        { name: { es: "Gunkans de Cerdo", en: "Pork Gunkan" }, price: 13000,
+        { name: { es: "Gunkans de Cerdo", en: "Pork Gunkan" }, price: 14000,
           desc: { es: "Tres unidades de gunkans envueltos en maduro o nori, con cerdo glaseado en salsa teriyaki.", en: "Three gunkan pieces wrapped in ripe plantain or nori, with pork glazed in teriyaki sauce." } },
-        { name: { es: "Gunkans de Carne", en: "Beef Gunkan" }, price: 13000,
+        { name: { es: "Gunkans de Carne", en: "Beef Gunkan" }, price: 14000,
           desc: { es: "Tres unidades de gunkans envueltos en maduro o nori, con carne glaseada en salsa teriyaki.", en: "Three gunkan pieces wrapped in ripe plantain or nori, with beef glazed in teriyaki sauce." } },
-        { name: { es: "Gunkans de Salmón Ahumado", en: "Smoked Salmon Gunkan" }, price: 16000,
+        { name: { es: "Gunkans de Salmón Ahumado", en: "Smoked Salmon Gunkan" }, price: 14000,
           desc: { es: "Tres unidades de gunkans envueltos en maduro o nori, con topping de tartar de salmón ahumado, terminado con skin de salmón, mix de ajonjolí y salsa teriyaki.", en: "Three gunkan pieces wrapped in ripe plantain or nori, topped with smoked salmon tartare, finished with salmon skin, sesame seed mix, and teriyaki sauce." } }
       ]},
       { title: { es: "Apanados en Panko", en: "Panko Crusted" }, items: [
-        { name: { es: "Calamar en Panko", en: "Panko Crusted Calamari" }, price: 15000,
+        { name: { es: "Calamar en Panko", en: "Panko Crusted Calamari" }, price: 16000,
           desc: { es: "Calamar apanado en panko, bañado en reducción de gulupa. Se sirve con salsa teriyaki o reducción de gulupa.", en: "Calamari breaded in panko, drizzled with a passion fruit (gulupa) reduction. Served with teriyaki sauce or passion fruit reduction." } },
-        { name: { es: "Kanikama en Panko", en: "Panko Crusted Kanikama" }, price: 14000,
+        { name: { es: "Kanikama en Panko", en: "Panko Crusted Kanikama" }, price: 15000,
           desc: { es: "Palitos de kanikama apanados en panko, rellenos de queso fundido, acompañados de salsa teriyaki y mix de ajonjolí.", en: "Panko-breaded kanikama (crab stick) sticks filled with melted cheese, served with teriyaki sauce and a sesame seed mix." } }
       ]},
       { title: { es: "Nigiris", en: "Nigiri" }, items: [
-        { name: { es: "Nigiri de Kanikama", en: "Kanikama Nigiri" }, price: 13000, spicy: true,
+        { name: { es: "Nigiri de Kanikama", en: "Kanikama Nigiri" }, price: 14000, spicy: true,
           desc: { es: "Dos unidades de nigiri de kanikama con topping de kanikama en salsa dinamita y mix de ajonjolí.", en: "Two pieces of kanikama nigiri topped with kanikama in dynamite sauce and a sesame seed mix." } },
-        { name: { es: "Nigiri de Salmón Ahumado", en: "Smoked Salmon Nigiri" }, price: 15000,
+        { name: { es: "Nigiri de Salmón Ahumado", en: "Smoked Salmon Nigiri" }, price: 14000,
           desc: { es: "Dos unidades de nigiri de salmón ahumado bañadas en reducción de gulupa y mix de ajonjolí.", en: "Two pieces of smoked salmon nigiri drizzled with passion fruit reduction and a sesame seed mix." } },
-        { name: { es: "Nigiri de Aguacate", en: "Avocado Nigiri" }, price: 12000,
+        { name: { es: "Nigiri de Aguacate", en: "Avocado Nigiri" }, price: 14000,
           desc: { es: "Dos unidades de nigiri de aguacate bañadas en salsa teriyaki y mix de ajonjolí.", en: "Two pieces of avocado nigiri drizzled with teriyaki sauce and a sesame seed mix." } }
       ]}
     ]
@@ -153,9 +153,9 @@ const MENU = [
           desc: { es: "Uramaki con mix de ajonjolí, relleno de camarón tempurizado, queso crema y aguacate, con topping de camarones tempurizados bañados en salsa dinamita.", en: "Uramaki with a sesame seed mix, filled with tempura shrimp, cream cheese, and avocado, topped with tempura shrimp in dynamite sauce." } }
       ]},
       { title: { es: "Tempura Rolls", en: "Tempura Rolls" }, items: [
-        { name: { es: "Zion Rolls", en: "Zion Rolls" }, price: 25000,
+        { name: { es: "Zion Rolls", en: "Zion Rolls" }, price: 27000,
           desc: { es: "Maki tempurizado relleno de kanikama tempurizado, aguacate y maduro, terminado con salsa teriyaki, reducción de gulupa y mix de ajonjolí.", en: "Tempura maki filled with tempura kanikama, avocado, and ripe plantain, finished with teriyaki sauce, passion fruit reduction, and a sesame seed mix." } },
-        { name: { es: "Uri Rolls", en: "Uri Rolls" }, price: 26000, spicy: true,
+        { name: { es: "Uri Rolls", en: "Uri Rolls" }, price: 28000, spicy: true,
           desc: { es: "Uramaki apanado en panko, relleno de pescado blanco tempurizado, aguacate y maduro, con topping de kanikama en salsa dinamita y terminado con mix de ajonjolí.", en: "Panko-breaded uramaki, filled with tempura white fish, avocado, and ripe plantain, topped with kanikama in dynamite sauce and finished with a sesame seed mix." } }
       ]}
     ]
@@ -205,8 +205,6 @@ const MENU = [
     id: "bebidas", title: { es: "Bebidas", en: "Drinks" }, img: "assets/img/drinks.webp",
     groups: [{ title: { es: "Sodas Saborizadas", en: "Flavored Sodas" }, items: [
       { name: { es: "Soda de Curuba y Romero", en: "Banana Passionfruit & Rosemary Soda" }, price: 14000,
-        desc: { es: "Soda artesanal saborizada.", en: "House-made flavored soda." } },
-      { name: { es: "Soda de Lychee", en: "Lychee Soda" }, price: 14000,
         desc: { es: "Soda artesanal saborizada.", en: "House-made flavored soda." } },
       { name: { es: "Soda de Frutos Rojos", en: "Mixed Berries Soda" }, price: 14000,
         desc: { es: "Soda artesanal saborizada.", en: "House-made flavored soda." } },
